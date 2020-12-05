@@ -1,5 +1,8 @@
 # Docker Image for Conifer
 
+[![Docker image pulls](https://img.shields.io/docker/pulls/midnighter/conifer)](https://hub.docker.com/r/midnighter/conifer)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blueviolet)](https://opensource.org/licenses/Apache-2.0)
+
 [Conifer](https://github.com/Ivarz/Conifer/) is a convenient utility for
 analyzing confidence scores in
 [kraken2](https://github.com/DerrickWood/kraken2/)'s taxonomic sequence
