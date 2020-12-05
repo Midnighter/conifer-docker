@@ -9,13 +9,17 @@ classification output.
 
 1. You need to have [Docker](https://www.docker.com/get-started) set up
    correctly.
-2. Build the image
+2. Either pull the public image
     ```
-    docker build --tag Midnighter/conifer:latest .
+    docker pull midnighter/conifer:latest
+    ```
+    or build the image locally from the `Dockerfile`
+    ```
+    docker build --tag midnighter/conifer:latest .
     ```
 3. Run conifer
     ```
-    docker run --rm Midnighter/conifer:latest --version
+    docker run --rm midnighter/conifer:latest --version
     ```
 
 ## Copyright
