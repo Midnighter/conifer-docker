@@ -30,7 +30,7 @@ RUN set -eux \
 
 FROM busybox:glibc
 
-COPY --from=builder /opt/Conifer/conifer /
+COPY --from=builder /opt/Conifer/conifer /bin/
 
-ENTRYPOINT ["/conifer"]
+ENTRYPOINT ["conifer"]
 
