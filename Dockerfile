@@ -28,7 +28,13 @@ RUN set -eux \
     && git submodule update --init --recursive \
     && gcc -static -std=c99 -Wall -Wextra -O3 -D_POSIX_C_SOURCE=200809L -I third_party/uthash/src -I . src/utils.c src/kraken_stats.c src/kraken_taxo.c src/main.c -o conifer -l:libm.a -l:libz.a
 
-FROM bitnami/minideb:buster
+FROM debian:buster-slim
+
+RUN set -eux \
+    && apt-get update \
+    && apt-get install --yes procps \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY --from=builder /opt/Conifer/conifer /usr/local/bin/
 
