@@ -11,10 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM bitnami/minideb:buster AS builder
+FROM debian:11.2-slim AS builder
+
+ARG TAG="v1.0.2"
 
 RUN set -eux \
-    && install_packages \
+    && apt-get update \
+    && apt-get install --yes \
         build-essential \
         ca-certificates \
         git \
@@ -25,10 +28,11 @@ WORKDIR /opt
 RUN set -eux \
     && git clone https://github.com/Ivarz/Conifer.git \
     && cd Conifer \
+    && git checkout ${TAG} -b latest \
     && git submodule update --init --recursive \
     && gcc -static -std=c99 -Wall -Wextra -O3 -D_POSIX_C_SOURCE=200809L -I third_party/uthash/src -I . src/utils.c src/kraken_stats.c src/kraken_taxo.c src/main.c -o conifer -l:libm.a -l:libz.a
 
-FROM debian:buster-slim
+FROM debian:11.2-slim
 
 RUN set -eux \
     && apt-get update \
